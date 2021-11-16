@@ -39,26 +39,27 @@
     $sql = $db->prepare("SELECT * FROM users");
     $sql->execute();
     $result = $sql->fetchAll();
-     
+?>     
 
-    foreach($result as $user => $values)
-   
-    {
-        if ($values['banned'] == true) {
-            $banned = "banned";
-         }
-         
-        echo "<div class=\"".$banned." rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0\"><img src=\"img/demo/authors/".$values['img']."\" \"alt=\"" .$values['name'].$values['surname']."\" class=\"img-thumbnail img-responsive rounded-circle\" style=\"width:5rem; height: 5rem;\"> <div class=\"ml-2 mr-3\">
-<h5 class=\"m-0\">".
-$values['name']." ".$values['surname']."(".$values['expert'].")"."
- <small class=\"m-0 fw-300\">".
-$values['role']."
+<?php foreach($result as $user) : ?>
+
+
+<div class="rounded-pill <?php if($user['banned']  == true){echo "banned";} ?> bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
+<img src="img/demo/authors/<?php echo $user['img'];?>" alt="<?php echo $user['name'];?> <?php echo $user['surname'];?>" class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
+<div class="ml-2 mr-3">
+<h5 class="m-0">
+<?php echo $user['name'];?> <?php echo $user['surname'];?>
+<small class="m-0 fw-300">
+<?php echo $user['role'];?> 
 </small>
-</h5> <a href=\"https://twitter.com/@".$values['twitter']."\" class=\"text-info fs-sm\" target=\"_blank\">@".$values['twitter']."</a> -
-<a href=\"".$values['url']."\" class=\"text-info fs-sm\" target=\"_blank\" title=\"Contact ".$values['name']."\"><i class=\"fal fa-envelope\"></i></a></div>
-</div>" ;
-    }
-?>
+</h5>
+<a href="https://twitter.com/@<?php echo $user['twitter'];?>" class="text-info fs-sm" target="_blank">@<?php echo $user['twitter'];?></a> -
+<a href="<?php echo $user['url'];?>" class="text-info fs-sm" target="_blank" title="Contact <?php echo $user['name'];?>"><i class="fal fa-envelope"></i></a>
+</div>
+</div>
+ 
+ 
+<?php endforeach;?>
 
 
                             

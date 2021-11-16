@@ -35,10 +35,12 @@
                            <div class="d-flex flex-wrap demo demo-h-spacing mt-3 mb-3">
                            
                             
-                            <?php
+                            
 
-$users = array( 
-    array(
+<?php
+
+$users = [ 
+    [
         'img' => "sunny.png", 
         'name' =>"Sunny", 
         'surname' =>"A.", 
@@ -46,9 +48,9 @@ $users = array(
         'role' =>"Lead Author", 
         'twitter' =>"myplaneticket", 
         'url' =>"https://wrapbootstrap.com/user/myorange",
-        'banned' => false),
-
-    array(
+        'banned' => false
+    ],
+    [
         'img' => "josh.png", 
         'name' =>"Jos", 
         'surname' =>"K.", 
@@ -56,8 +58,9 @@ $users = array(
         'role' =>"Partner & Contributor", 
         'twitter' =>"atlantez", 
         'url' =>"https://wrapbootstrap.com/user/Walapa",
-        'banned' => false),
-    array(
+        'banned' => false
+    ],
+    [
         'img' => "jovanni.png", 
         'name' =>"Jovanni", 
         'surname' =>"L.", 
@@ -65,8 +68,9 @@ $users = array(
         'role' =>"Partner & Contributor", 
         'twitter' =>"lodev09", 
         'url' =>"https://wrapbootstrap.com/user/lodev09",
-        'banned' => true),
-    array(
+        'banned' => true
+    ],
+    [
         'img' => "roberto.png", 
         'name' =>"Roberto", 
         'surname' =>"R.",
@@ -74,32 +78,32 @@ $users = array(
         'role' =>"Partner & Contributor", 
         'twitter' =>"sildur", 
         'url' =>"https://wrapbootstrap.com/user/sildur",
-        'banned' => true),
-
-    );
-
-
-foreach($users as $user => $values)
-{
-     if ($values['banned'] == true) {
-        $banned = "banned";
-     }
-
-echo "<div class=\"".$banned." rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0\"><img src=\"img/demo/authors/".$values['img']."\" \"alt=\"" .$values['name'].$values['surname']."\" class=\"img-thumbnail img-responsive rounded-circle\" style=\"width:5rem; height: 5rem;\"> <div class=\"ml-2 mr-3\">
-<h5 class=\"m-0\">".
-$values['name']." ".$values['surname']."(".$values['expert'].")"."
- <small class=\"m-0 fw-300\">".
-$values['role']."
-</small>
-</h5> <a href=\"https://twitter.com/@".$values['twitter']."\" class=\"text-info fs-sm\" target=\"_blank\">@".$values['twitter']."</a> -
-<a href=\"".$values['url']."\" class=\"text-info fs-sm\" target=\"_blank\" title=\"Contact ".$values['name']."\"><i class=\"fal fa-envelope\"></i></a></div>
-</div>" ;
- 
- 
-}
-
+        'banned' => true
+    ]
+    ];
 
 ?>
+
+<?php foreach($users as $user) : ?>
+
+
+
+<div class="rounded-pill <?php echo ($user['banned']  == false) ? '' : 'banned'; ?> bg-white shadow-sm p-2 border-faded mr-3 d-flex flex-row align-items-center justify-content-center flex-shrink-0">
+<img src="img/demo/authors/<?php echo $user['img'];?>" alt="<?php echo $user['name'];?> <?php echo $user['surname'];?>" class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
+<div class="ml-2 mr-3">
+<h5 class="m-0">
+<?php echo $user['name'];?> <?php echo $user['surname'];?>
+<small class="m-0 fw-300">
+<?php echo $user['role'];?> 
+</small>
+</h5>
+<a href="https://twitter.com/@<?php echo $user['twitter'];?>" class="text-info fs-sm" target="_blank">@<?php echo $user['twitter'];?></a> -
+<a href="<?php echo $user['url'];?>" class="text-info fs-sm" target="_blank" title="Contact <?php echo $user['name'];?>"><i class="fal fa-envelope"></i></a>
+</div>
+</div>
+ 
+ 
+<?php endforeach;?>
                             
                         </div>
                         </div>

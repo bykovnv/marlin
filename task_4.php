@@ -36,27 +36,46 @@
 <?php
 
 
-$panel = array
-  (
-  array("My Tasks","130 / 500","bg-fusion-400", 65,),
-  array("Transfered","440 TB","bg-success-500", 34,),
-  array("Bugs Squashed","77%","bg-info-400", 77,),
-  array("User Testing","7 days","bg-primary-300", 84,),
-  );
-  
-foreach ($panel as $panelKey => $panelValue) {
-   
-echo "<div class=\"d-flex\">";
-echo $panelValue[0];
-echo "<span class=\"d-inline-block ml-auto\">$panelValue[1]</span></div>";
-echo "<div class=\"progress progress-sm mb-3\">";
-echo "<div class=\"progress-bar $panelValue[2]\" role=\"progressbar\" style=\"width: $panelValue[3]%;\" aria-valuenow=\"$panelValue[3]\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-</div>";
+$panel = [
+    [
+    'title' => 'My Tasks',
+    'param' => '130 / 500',
+    'dataAtribute' => 'bg-fusion-400',
+    'width' => 65
+    ],
+    [
+    'title' => 'Transfered',
+    'param' => '440 TB',
+    'dataAtribute' => 'bg-success-500',
+    'width' => 34
+    ],
+    [
+    'title' => 'Bugs Squashed',
+    'param' => '77%',
+    'dataAtribute' => 'bg-info-400',
+    'width' => 77
+    ],
+    [
+    'title' => 'User Testing',
+    'param' => '7 days',
+    'dataAtribute' => 'bg-primary-300',
+    'width' => 84
+    ]
+  ];
 
-
-}
- 
 ?>
+  
+<?php foreach ($panel as $panelKey): ?>
+   
+<div class="d-flex mt-2">
+<?php echo $panelKey['title']; ?>
+<span class="d-inline-block ml-auto"><?php echo $panelKey['param']; ?></span>
+</div>
+<div class="progress progress-sm mb-3">
+<div class="progress-bar <?php echo $panelKey['dataAtribute']; ?>" role="progressbar" style="width: <?php echo $panelKey['width']; ?>%;" aria-valuenow="<?php echo $panelKey['width']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+ 
+<?php endforeach;?>
 
 
                             

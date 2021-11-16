@@ -34,24 +34,37 @@
                         <div class="panel-content">
                             <ol class="breadcrumb page-breadcrumb">
 
-                                <?php
-                                $breadcrumbs = array(
-                                    '0' => ['Главная'],  
-                                    '1' => ['PHP'],
-                                    '2' => ['Функции', 'active']);
-                                foreach ($breadcrumbs as $key => $value) {
+<?php
+$breadcrumbs = [
+[
+    'title' => 'Главная',
+    'href' => '#',
+    'link' => true
+],   
+[
+    'title' => 'PHP',
+    'href' => '#',
+    'link' => true
+],
+[
+    'title' => 'Функции',
+    'href' => '#',
+    'link' => false
+]
+];
+?>
 
-                                   echo "<li class=\"breadcrumb-item";
-                                   
-                                   if ($value[1] == 'active') {
-                                    echo " $value[1]\">$value[0]</li>\n";
-                                    }
-                                    else  {
-                                        echo "\"><a href=\"#\">$value[0]</a></li>\n";
-                                    };
-  
-                                }
-                                ?>
+<?php foreach ($breadcrumbs as $value): ?>  
+    <?php if ($value['link']):?> 
+       <li class="breadcrumb-item"><a href="<?php echo $value['href'];?>"><?php echo $value['title'];?></a></li>
+       <?php else: ?>
+        <li class="breadcrumb-item active"><?php echo $value['title'];?></li>
+    <?php endif;?>
+
+
+
+<?php endforeach; ?>
+
 
                               
                             </ol>

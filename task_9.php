@@ -31,20 +31,12 @@
                             <button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
                         </div>
                     </div>
-                    <?php
-    $db = new PDO('mysql:host=localhost;dbname=php-start;', 'php-start_usr', 'pqQn1C7FxQ7A1Vn6', [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
-    $sql = "INSERT task_9 (text) VALUES (:text)";
-    $query = $db->prepare($sql);
-    $text = $_POST["text"];
-    $params = ["text" => $text];
-    $query->execute($params); 
-    
-?>
+                    
                     <div class="panel-container show">
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <form   method="post">
+                                    <form action="handler_9.php"  method="post">
                                         <label class="form-label" for="simpleinput">Text</label>
                                         <input type="text" name="text" id="simpleinput" class="form-control" value="<?=$text;?>">
                                         <button class="btn btn-success mt-3">Submit</button>

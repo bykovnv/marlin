@@ -54,7 +54,7 @@
 
                                 <div class="form-group">
                                     
-                                    <form action="handler.php" method="post">
+                                    <form action="handler_10.php" method="post">
                                         <label class="form-label" for="simpleinput">Text</label>
                                         <input type="text" name="text" id="simpleinput" class="form-control">
                                         <button class="btn btn-success mt-3">Submit</button>

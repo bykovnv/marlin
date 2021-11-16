@@ -43,36 +43,40 @@
     $sql = $db->prepare("SELECT * FROM task_8");
     $sql->execute();
     $result = $sql->fetchAll();
-    echo "<table class=\"table m-0\">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>";
-    foreach($result as $users => $values)
-    {
-        echo "<tr>
-        <th scope=\"row\">".$values['id']."</th>
-        <td>".$values['first_name']."</td>
-        <td>".$values['last_name']."</td>
-        <td>@".$values['username']."</td>
-        <td>
-            <a href=\"show.php?id=".$values['id']."\" class=\"btn btn-info\">Редактировать</a>
-            <a href=\"edit.php?id=".$values['id']."\" class=\"btn btn-warning\">Изменить</a>
-            <a href=\"delete.php?id=".$values['id']."\" class=\"btn btn-danger\">Удалить</a>
-        </td>
-    </tr>" ;
-    }
-
-    echo " </tbody></table> ";
 
 ?>
+<table class="table m-0">
+<thead>
+    <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+                                    
+<?php foreach ($result as $users): ?>
 
+
+<tbody>
+    <tr>
+        <th scope="row"><?php echo $users['id']; ?></th>
+        <td><?php echo $users['first_name']; ?></td>
+        <td><?php echo $users['last_name']; ?></td>
+        <td>@<?php echo $users['username']; ?></td>
+        <td>
+            <a href="show.php?id=<?php echo $users['id']; ?>" class="btn btn-info">Редактировать</a>
+            <a href="edit.php?id=<?php echo $users['id']; ?>" class="btn btn-warning">Изменить</a>
+            <a href="delete.php?id=<?php echo $users['id']; ?>" class="btn btn-danger">Удалить</a>
+        </td>
+    </tr>
+</tbody>
+                        
+
+
+<?php endforeach;?>
+</table>
                                  
                             </div>
                         </div>
